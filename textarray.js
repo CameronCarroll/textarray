@@ -1,6 +1,6 @@
 var express = require('express');
 
-var app = express.createServer(express.logger());
+var app = express(express.logger());
 
 app.get('/', function(req, res) {
   res.send('hello heroku');
