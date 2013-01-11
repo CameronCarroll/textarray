@@ -11,28 +11,36 @@ suite('database:', function() {
   var insertedUser;
   var insertedJob;
   var insertedArray;
+  var username = 'cameron',
+      password = 'testpass',
+      email = 'test@mail.com';
 
   test('open should a db connection', function(done) {
     db.open(done);
   });
 
   test('insertOne should insert an object to its collection', function(done) {
-    var user = generate_some_user
-    db.insertOne('users', user, function(error, user) {
+    var job = {username: username,
+               time_started: new Date(),
+               time_modified: new Date(),
+               target_number: 6193585266,
+               message_pack_index: 'testpack',
+               frequency: 6}
+    db.insertOne('jobs', job, function(error, job) {
       should.not.exist(error);
-      should.exist(user._id);
-      insertedUser = user;
+      should.exist(job._id);
+      insertedJob = job;
       done();
     });
   });
 
   test('findOne should find an object from its collection', function(done) {
-    var id = insertedUser._id;
-    db.findOne('users', id, function(error, user) {
+    var id = insertedJob._id;
+    db.findOne('jobs', id, function(error, job) {
       should.not.exist(error);
-      should.exist(user._id);
-      user.some_attribute.should.eql(insertedUser.some_attribute);
-      user.some_attribute2.should.eql(insertedUser.some_attribute2);
+      should.exist(job._id);
+      job.username.should.eql(insertedJob.username);
+      job.message_pack_index.should.eql(insertedJob.message_pack_index);
       done();
     });
   });
