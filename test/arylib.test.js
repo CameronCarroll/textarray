@@ -8,10 +8,11 @@ var assert = require('assert'),
 
 suite('textararay library:', function() {
 
+  var username = 'cameron',
+      email = 'test@mail.com',
+      password = 'testpassword'
+
   setup(function() {
-    var username = 'cameron',
-        email = 'test@mail.com',
-        password = 'testpassword'
     // Setup/teardown function also serves to test createUser! How convenient.
     arylib.createUser(username, email, password, function(error, user) {
     });

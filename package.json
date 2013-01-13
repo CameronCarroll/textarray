@@ -9,7 +9,8 @@
     "mongodb": "*",
     "mocha": "*",
     "should": "*",
-    "database-cleaner": "*"
+    "database-cleaner": "*",
+    "bcrypt": "*"
   },
   "engines": {
     "node": "0.8.x",
