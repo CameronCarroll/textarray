@@ -6,7 +6,7 @@ var assert = require('assert'),
     arylib = require('../lib/arylib')
 
 
-suite('textararay library:', function() {
+suite('textarray library:', function() {
 
   var username = 'cameron',
       email = 'test@mail.com',
@@ -22,7 +22,7 @@ suite('textararay library:', function() {
     db.clean_database
   });
 
-  test('authenticate eturn a user id if correct, otherwise null', function() {
+  test('authenticate should return a user id if correct, otherwise null', function() {
     arylib.authenticate(username, password, function(error, user_id) {
       should.not.exist(error);
       should.exist(user_id);
