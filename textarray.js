@@ -2,7 +2,8 @@
 
 var express = require('express'),
     db = require('./lib/db'),
-    arylib = require('./lib/arylib');
+    arylib = require('./lib/arylib'),
+    aryroutes = require('./routes/aryroutes');
 
 var app = express(express.logger());
 
