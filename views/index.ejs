@@ -15,97 +15,94 @@
   }
   </style>
 
-  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <![endif]-->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="../assets/ico/favicon.png">
+</head>
+<body>
 
-      <link rel="shortcut icon" href="../assets/ico/favicon.png">
-    </head>
-    <body>
-
-      <div id="signupModal" class="modal hide fade smallModal">
-        <form id="signup-form" action="/signup" method="post" class="form-horizontal">
-          <div class="modal-header"><a data-dismiss="modal" class="close"></a>
-            <h3> Sign up today! </h3>
-          </div>
-          <div class="modal-body">
-            <fieldset>
-              <div class="control-group">
-                <input type="text" name="username" placeholder="Username" class="input-xlarge uname" />
-                <span id="imagePlaceHolder"></span>
-              </div>
-              <div class="control-group">
-                <input type="text" name="email" placeholder="Email" class="input-xlarge" />
-              </div>
-              <div class="control-group">
-                <input type="password" name="password" placeholder="Password" class="input-xlarge" />
-              </div>
-            </fieldset>
-          </div>
-        <div class="modal-footer">
-          <a href="#" data-dismiss="modal" class="btn"> Close </a>
-          <button class="btn btn-primary create-button" type="submit"> Create Account </button>
-        </div>
-      </form>
-    </div>
-
-    <div id="loginModal" class="modal hide fade smallModal">
-      <form id="login-form" action="/login" method="post" class="form-horizontal">
-        <div class="modal-header"><a data-dismiss="modal" class="close"></a>
-          <h3>Log In</h3></div>
-          <div class="modal-body">
-            <fieldset>
-              <div class="control-group">
-                <input type="text" name="username" placeholder="Username" class="input-xlarge uname"/>
-                <span id="imagePlaceHolder"></span>
-              </div>
-              <div class="control-group">
-                <input type="password" name="password" placeholder="Password" class="input-xlarge"/>
-              </div>
-            </fieldset>
-          </div>
-          <div class="modal-footer">
-            <a href="#" data-dismiss="modal" class="btn">Close</a>
-            <button class="btn btn-primary" type="submit">Log In</button>
-          </div>
-        </form> 
+  <div id="signupModal" class="modal hide fade smallModal">
+    <form id="signup-form" action="/signup" method="post" class="form-horizontal">
+      <div class="modal-header"><a data-dismiss="modal" class="close"></a>
+        <h3> Sign up today! </h3>
       </div>
-
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Textarray</a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About this App</a></li>
-                <li><a data-toggle="modal" href="#signupModal">Register Account</a></li>
-                <li><a data-toggle="modal" href="#loginModal">Log in</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
+      <div class="modal-body">
+        <fieldset>
+          <div class="control-group">
+            <input type="text" name="username" placeholder="Username" class="input-xlarge uname" />
+            <span id="imagePlaceHolder"></span>
           </div>
-        </div>
+          <div class="control-group">
+            <input type="text" name="email" placeholder="Email" class="input-xlarge" />
+          </div>
+          <div class="control-group">
+            <input type="password" name="password" placeholder="Password" class="input-xlarge" />
+          </div>
+        </fieldset>
       </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn"> Close </a>
+        <button class="btn btn-primary create-button" type="submit"> Create Account </button>
+      </div>
+    </form>
+  </div>
 
+  <div id="loginModal" class="modal hide fade smallModal">
+    <form id="login-form" action="/login" method="post" class="form-horizontal">
+      <div class="modal-header"><a data-dismiss="modal" class="close"></a>
+        <h3>Log In</h3>
+      </div>
+      <div class="modal-body">
+        <fieldset>
+          <div class="control-group">
+            <input type="text" name="username" placeholder="Username" class="input-xlarge uname"/>
+            <span id="imagePlaceHolder"></span>
+          </div>
+          <div class="control-group">
+            <input type="password" name="password" placeholder="Password" class="input-xlarge"/>
+          </div>
+        </fieldset>
+      </div>
+      <div class="modal-footer">
+        <a href="#" data-dismiss="modal" class="btn">Close</a>
+        <button class="btn btn-primary" type="submit">Log In</button>
+      </div>
+    </form> 
+  </div>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
       <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Textarray</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About this App</a></li>
+            <li><a data-toggle="modal" href="#signupModal">Register Account</a></li>
+            <li><a data-toggle="modal" href="#loginModal">Log in</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 
-        <h1>Textarray {version}</h1>
-        <p>A sms-based reminder service; Free to use, but only allows one project and one target number at a time.</p>
+  <div class="container">
+    <h1>Textarray {version}</h1>
+    <p>A sms-based reminder service; Free to use, but only allows one project and one target number at a time.</p>
+  </div> <!-- /container -->
 
-      </div> <!-- /container -->
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/aryclient.js"></script>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/js/aryclient.js"></script>
-
-  </body>
-  </html>
+</body>
+</html>
