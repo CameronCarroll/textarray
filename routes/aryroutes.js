@@ -6,15 +6,7 @@ module.exports = {
   },
 
   login: function(req, res) {
-    arylib.authenticate(req.body.username, req.body.password, function(err, id) {
-      if (id) {
-        req.session._id = id;
-        res.redirect('/job');
-      }
-      else {
-        res.redirect('/');
-      }
-    });
+    res.redirect('/job');
   },
 
   signup: function(req, res) {

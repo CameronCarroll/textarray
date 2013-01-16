@@ -10,7 +10,8 @@
     "mocha": "*",
     "should": "*",
     "database-cleaner": "*",
-    "bcrypt": "*"
+    "bcrypt": "*",
+    "passport": "*"
   },
   "engines": {
     "node": "0.8.x",
