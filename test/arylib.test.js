@@ -9,29 +9,45 @@ var username = 'cameron',
     email = 'test@mail.com',
     password = 'testpass';
 
-describe('TextArray Library: ', function() {
-  describe('create_user: ', function() {
+describe('TextArray Library:', function() {
 
-    // Seed database:
-    beforeEach(function(done) {
-      db.clear(function() {
-        console.log('Cleared database...');
-        arylib.createUser(username, email, password, function() {
-          console.log('Created user... ');
-        });
+  var instance_user;
+
+  beforeEach(function(done) {
+    db.clear(function() {
+      arylib.createUser(username, email, password, function(err, user) {
+        // console.log(" ");
+        // console.log("(BeforeEach) Generated User: --");
+        // console.log(user);
+        // console.log(" ");
+        instance_user = user;
+        done();
+      });
+    });
+  })
+
+  describe('create_user', function() {
+    // 1:
+    it("should save a user object to database", function(done) {
+      db.findUserByName(username, function(err, user) {
+        should.exist(user);
+        should.not.exist(err);
+        done();
       });
     })
+  })
 
+  describe('authenticate', function() {
     // 1:
-    it("should save a user object to database", function() {
-      console.log("test 1");
-    })
-
-    // 2:
-    it("should return a user_id if saved successfully", function() {
-      console.log("test 2");
+    it("should return user_id if correctly identified", function(done) {
+      arylib.authenticate(username, password, function(err, user_id) {
+        should.not.exist(err);
+        instance_user._id.should.eql(user_id);
+        done();
+      });
     })
   })
+
 })
 
 
