@@ -48,22 +48,23 @@ describe('database', function() {
   });
 });
 
-// suite('database:', function() {
 
-//   var insertedJob;
-//   var username = 'cameron';
 
-//   test('open should a db connection', function(done) {
-//     db.open(done);
-//   });
-
-//   test('insertOne should insert an object to its collection', function(done) {
-    
+//   test('getUser should return a user according to our name query', function(done) {
+//     arylib.getUser(test_username, function(err, user) {
+//       should.not.exist(err);
+//       should.exist(user);
+//       user.username.should.eql(test_username);
+//       done();
 //     });
 //   });
 
-//   test('findOne should find an object from its collection', function(done) {
-    
+//   test('getUserById should return a user according to our id query', function(done) {
+//     arylib.getUserById(test_user_id, function(err, user) {
+//       should.not.exist(err);
+//       user._id.should.eql(test_user_id);
+//       done();
 //     });
 //   });
+// });
 // });

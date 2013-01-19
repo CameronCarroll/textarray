@@ -22,6 +22,10 @@
 </head>
 <body>
 
+  <% if (message) { %>
+<p><%= message %></p>
+<% } %>
+
   <div id="signupModal" class="modal hide fade smallModal">
     <form id="signup-form" action="/signup" method="post" class="form-horizontal">
       <div class="modal-header"><a data-dismiss="modal" class="close"></a>

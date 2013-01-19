@@ -5,7 +5,8 @@ var express = require('express'),
     LocalStrategy = require('passport-local').Strategy,
     db = require('./lib/db'),
     arylib = require('./lib/arylib'),
-    aryroutes = require('./routes/aryroutes');
+    aryroutes = require('./routes/aryroutes'),
+    flash = require('connect-flash');;
 
 
 
@@ -44,6 +45,7 @@ app.configure(function() {
   app.use(express.session({secret: 'txtarysecretsauce'}));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(flash());
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(express.static(__dirname + '/public'));
@@ -59,7 +61,7 @@ app.get('/', aryroutes.getIndex);
 app.get('/api/user/:username', aryroutes.getUser);
 app.get('/job', aryroutes.job);
 
-app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), aryroutes.login);
+app.post('/login', passport.authenticate('local', { failureRedirect: '/', failureFlash: true }), aryroutes.login);
 app.post('/signup', aryroutes.signup);
 
 var port = process.env.PORT || 3000;

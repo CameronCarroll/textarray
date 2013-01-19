@@ -51,46 +51,6 @@ describe('TextArray Library:', function() {
 })
 
 
-// suite('textarray library:', function() {
-
-//   var test_username = 'cameron',
-//       test_email = 'test@mail.com',
-//       test_password = 'testpassword',
-//       test_user_id = null;
-
-
-
-//   suite('authenticate()', function() {
-
-//     suiteSetup(function() {
-//       db.clean_database(function() {
-//         arylib.createUser(test_username, test_email, test_password, function(err, user) {
-//           console.log(user);
-//         });
-//       });
-//     });
-
-//     suiteTeardown(function() {
-//       db.clean_database(function() {
-//         console.log('Cleared database for teardown!');
-//       });
-//     });
-
-//     test('authenticate should return a user id if correct, otherwise null', function(done) {
-//       db.findAll('users', function(err, users) {
-//         console.log('Found users:');
-//         console.log(users);    
-//       });
-//       arylib.authenticate(test_username, test_password, function(err, user_id) {
-//         should.not.exist(err);
-//         should.exist(user_id);
-//         test_user_id = user_id;
-//         done();
-//       });
-//     });
-//   });
-
-  
 
 //   test('getUser should return a user according to our name query', function(done) {
 //     arylib.getUser(test_username, function(err, user) {

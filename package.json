@@ -11,7 +11,9 @@
     "should": "*",
     "database-cleaner": "*",
     "bcrypt": "*",
-    "passport": "*"
+    "passport": "*",
+    "passport-local": "*",
+    "connect-flash": "*"
   },
   "engines": {
     "node": "0.8.x",
