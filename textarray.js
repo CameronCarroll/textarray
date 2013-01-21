@@ -6,7 +6,9 @@ var express = require('express'),
     db = require('./lib/db'),
     arylib = require('./lib/arylib'),
     aryroutes = require('./routes/aryroutes'),
-    flash = require('connect-flash');;
+    flash = require('connect-flash');
+
+var VERSION = '0.1.0';
 
 
 
@@ -18,9 +20,6 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
   db.findUserById(id, function(err, user) {
-    console.log('id:' + id);
-    console.log('user:');
-    console.log(user);
     done(err, user);
   });
 });
@@ -68,6 +67,7 @@ app.post('/signup', aryroutes.signup);
 
 var port = process.env.PORT || 3000;
 db.open(function() {
+  console.log("TextArray " + VERSION + " -- Cameron Carroll 2013");
   console.log("Database opened successfully. Listening on port: " + port);
   app.listen(port);
 });

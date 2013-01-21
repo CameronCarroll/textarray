@@ -27,7 +27,6 @@ module.exports = {
   },
 
   job: function(req, res) {
-    console.log('(job route) sesh id: ' + req.session.passport.user);
     db.findUserById(req.session.passport.user, function(err, user) {
       if (user && user.job) {
         job = user.job;
