@@ -1,3 +1,10 @@
+// TextArray SMS Reminder Application
+// File: arylib.test.js --- Created: January 2013
+// Author: Cameron Carroll
+// Purpose: Test file for "Main" library
+// Contains: Test setup and methods for user auth functions.
+
+
 'use strict';
 
 var assert = require('assert'),

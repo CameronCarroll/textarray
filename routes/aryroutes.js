@@ -1,3 +1,10 @@
+// TextArray SMS Reminder Application
+// File: aryroutes.js --- Created: January 2013
+// Author: Cameron Carroll
+// Purpose: "Routes" file; Handles requests with a response based on route.
+// Contains: Logic for web app routes.
+
+
 var arylib = require('../lib/arylib');
 var db = require('../lib/db');
 

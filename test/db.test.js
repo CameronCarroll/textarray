@@ -1,3 +1,10 @@
+// TextArray SMS Reminder Application
+// File: db.test.js --- Created: January 2013
+// Author: Cameron Carroll
+// Purpose: Test file for DB library.
+// Contains: DB access layer tests and setup.
+
+
 'use strict';
 
 var assert = require ('assert'),

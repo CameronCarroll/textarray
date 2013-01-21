@@ -1,3 +1,9 @@
+// TextArray SMS Reminder Application
+// File: textarray.js --- Created: January 2013
+// Author: Cameron Carroll
+// Purpose: "Main" file for TextArray web app. Invoke with 'node textarray.js'
+// Contains: Auth logic, app configuration, route funnels, server starting logic
+
 'use strict';
 
 var express = require('express'),
