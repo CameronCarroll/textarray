@@ -12,8 +12,8 @@ var express = require('express'),
 
 // Authentication:
 
-passport.serializeUser(function(use, done) {
-  done(null, user.id);
+passport.serializeUser(function(user, done) {
+  done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -25,11 +25,10 @@ passport.deserializeUser(function(id, done) {
 passport.use(new LocalStrategy(
   function(username, password, done) {
     process.nextTick(function() {
-      db.findUserByName(username, function(err, user) {
-        if (err) { return done(err); }
-        if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-        if (user.password != password) { return done(null, false, { message: 'Invalid password.' }); }
-        return done(null, user);
+      arylib.authenticate(username, password, function(err, user) {
+        if (err) { return done(err, { message: 'Error.'}); }
+        if (!user) { return done(null, false, { message: 'Authentication failed.' }); }
+        return done(null, user, { message: 'Success.'});
       })
     });
   }
@@ -60,8 +59,8 @@ app.set('view options', {
 app.get('/', aryroutes.getIndex);
 app.get('/api/user/:username', aryroutes.getUser);
 app.get('/job', aryroutes.job);
-
-app.post('/login', passport.authenticate('local', { failureRedirect: '/', failureFlash: true }), aryroutes.login);
+app.get('/login', aryroutes.login);
+app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), aryroutes.logged_in);
 app.post('/signup', aryroutes.signup);
 
 var port = process.env.PORT || 3000;

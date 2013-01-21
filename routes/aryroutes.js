@@ -1,4 +1,5 @@
 var arylib = require('../lib/arylib');
+var db = require('../lib/db');
 
 module.exports = {
   getIndex: function(req, res) {
@@ -6,7 +7,7 @@ module.exports = {
   },
 
   login: function(req, res) {
-    res.redirect('/job');
+    res.render('login', { message: req.flash('error') });
   },
 
   signup: function(req, res) {
@@ -26,10 +27,18 @@ module.exports = {
   },
 
   job: function(req, res) {
-    arylib.getUserById(req.session._id, function(err, user) {
-      if (user && user.job)
-        job = user.job
-      res.render('job', {job:job});
+    db.findUserById(req.session._id, function(err, user) {
+      if (user && user.job) {
+        job = user.job;
+        res.render('job', {job:job});
+      }
+      else {
+        res.render('job', {job:null});
+      }
     });
+  },
+
+  logged_in: function(req, res) {
+    res.redirect('/job');
   }
 }

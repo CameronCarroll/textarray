@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <% include head %>
+
+  <body>
+    <% if (message) { %>
+      <p><%= message %></p>
+    <% } %>
+    <form id="login-form" action="/login" method="post" class="form-horizontal">
+      <h3>Log In </h3>
+      <div class="form-body">
+        <fieldset>
+          <div class="control-group">
+            <input type="text" name="username" placeholder="Username" class="input-xlarge uname" />
+            <span id="imagePlaceHolder"></span>
+          </div>
+          <div class="control-group">
+            <input type="password" name="password" placeholder="Password" class="input-xlarge" />
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-footer">
+        <a href="#" data-dismiss="modal" class="btn">Close</a>
+        <button class="btn btn-primary" type="submit">Log In</button>
+      </div>
+    </form>
+
+    <% include jsinclude %>
+  </body>
+
+</html>
