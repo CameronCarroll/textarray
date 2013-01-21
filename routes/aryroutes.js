@@ -27,13 +27,18 @@ module.exports = {
   },
 
   job: function(req, res) {
-    db.findUserById(req.session._id, function(err, user) {
+    console.log('(job route) sesh id: ' + req.session.passport.user);
+    db.findUserById(req.session.passport.user, function(err, user) {
       if (user && user.job) {
         job = user.job;
         res.render('job', {job:job});
       }
-      else {
+      else if (user) {
         res.render('job', {job:null});
+      }
+      else {
+        res.redirect('/login');
+        //res.render('login');
       }
     });
   },

@@ -40,9 +40,9 @@ describe('TextArray Library:', function() {
   describe('authenticate', function() {
     // 1:
     it("should return user_id if correctly identified", function(done) {
-      arylib.authenticate(username, password, function(err, user_id) {
+      arylib.authenticate(username, password, function(err, user) {
         should.not.exist(err);
-        instance_user._id.should.eql(user_id);
+        instance_user._id.should.eql(user._id);
         done();
       });
     })

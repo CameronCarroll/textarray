@@ -3,7 +3,7 @@
 var assert = require ('assert'),
     db = require('../lib/db'),
     should = require('should'),
-    our_library = require('../lib/arylib')
+    arylib = require('../lib/arylib')
 
 var userData = {};
 
@@ -46,6 +46,32 @@ describe('database', function() {
       });
     });
   });
+
+  describe('findUserById', function() {
+    var user_id;
+
+    before(function(done) {
+      var username = 'cameron',
+          email = 'test@mail.com',
+          password = 'testpass';
+      
+
+      db.clear(function() {
+        arylib.createUser(username, email, password, function(err, user) {
+          user_id = user._id;
+          done();
+        });
+      });
+    })
+
+    it('should return a user object found by id', function(done) {
+      db.findUserById(user_id, function(err, user) {
+        should.not.exist(err);
+        user._id.should.eql(user_id);
+        done();
+      });
+    })
+  })
 });
 
 
