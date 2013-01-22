@@ -55,4 +55,22 @@ describe('TextArray Library:', function() {
     })
   })
 
+  describe('create_job', function() {
+    // 1:
+    // Job; owner, name, target_number, messages_key, frequency
+    it("should save a job and return job id", function(done) {
+      var owner = 'cameron',
+          job_name = 'test',
+          messages_key = 'testkey',
+          target_number = '6191111111',
+          frequency = '6';
+
+      arylib.createJob(owner, job_name, messages_key, target_number, frequency, function(err, job_id) {
+        should.not.exist(err);
+        should.exist(job_id);
+        done();
+      })
+    })
+  })
+
 })
