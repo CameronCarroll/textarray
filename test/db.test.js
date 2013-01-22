@@ -79,6 +79,36 @@ describe('database', function() {
       });
     })
   })
+
+  describe('findUserByName', function() {
+    var user_id;
+    var user_name;
+
+    before(function(done) {
+      var username = 'cameron',
+          email = 'test@mail.com',
+          password = 'testpass';
+
+          user_name = username;
+      
+
+      db.clear(function() {
+        arylib.createUser(username, email, password, function(err, user) {
+          user_id = user._id;
+          done();
+        });
+      });
+    })
+
+    it('should return a user object found by name', function(done) {
+      db.findUserByName(user_name, function(err, user) {
+        should.not.exist(err);
+        user._id.should.eql(user_id);
+        done();
+      });
+    })
+  })
+
 });
 
 
