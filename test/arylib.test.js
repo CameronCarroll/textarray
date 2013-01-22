@@ -56,23 +56,3 @@ describe('TextArray Library:', function() {
   })
 
 })
-
-
-
-//   test('getUser should return a user according to our name query', function(done) {
-//     arylib.getUser(test_username, function(err, user) {
-//       should.not.exist(err);
-//       should.exist(user);
-//       user.username.should.eql(test_username);
-//       done();
-//     });
-//   });
-
-//   test('getUserById should return a user according to our id query', function(done) {
-//     arylib.getUserById(test_user_id, function(err, user) {
-//       should.not.exist(err);
-//       user._id.should.eql(test_user_id);
-//       done();
-//     });
-//   });
-// });
