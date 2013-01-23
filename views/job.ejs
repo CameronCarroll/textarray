@@ -4,7 +4,9 @@
   <% include head %>
 
   <body>
-    job
+    <% if (message) { %>
+      <p><%= message %></p>
+    <% } %>
 
     <% include jsinclude %>
   </body>

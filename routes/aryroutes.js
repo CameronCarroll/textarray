@@ -14,7 +14,12 @@ module.exports = {
   },
 
   login_form: function(req, res) {
-    res.render('login', { message: req.flash('error') });
+    if (req.session.passport.user) {
+      res.redirect('/');
+    }
+    else {
+      res.render('login', { message: req.flash('error') });
+    }
   },
 
   signup_form: function(req, res) {
@@ -27,10 +32,23 @@ module.exports = {
   },
 
   signup: function(req, res) {
-    arylib.createUser(req.body.username, req.body.email, req.body.password, function(err, user) {
-      console.log(user);
-      res.redirect('/job');
-    });
+    var username = req.body.username,
+        email = req.body.email,
+        password = req.body.password;
+
+    console.log("Creating user for signup...");
+
+    if (username && password) {
+      arylib.createUser(req.body.username, req.body.email, req.body.password, function(err, user) {
+        console.log(user);
+        res.redirect('/job');
+      });
+    }
+    else {
+      console.log('username and password fail');
+      res.redirect('/signup', { message: "Missed a required field."});
+    }
+    
   },
 
   getUser: function(req, res) {
@@ -46,7 +64,7 @@ module.exports = {
     if (req.session.passport.user) {
       db.findUserById(req.session.passport.user, function(err, user) {
         if (user && user.job) {
-          res.render('job', {job:user.job});
+          res.render('job', {job:user.job, message:req.flash('error')});
         }
         else {
           res.redirect('/create_job');
@@ -79,8 +97,7 @@ module.exports = {
 
     arylib.createJob(owner, jobName, messages, targetNumber, frequency, function(err, job_id) {
       db.set('users', owner, {job: job_id}, function(err, user) {
-        console.log('pushed to user: ' + user);
-        res.redirect('/job');
+        res.redirect('/job', { message: "Created job successfully."});
       });
     });
   },
@@ -98,6 +115,17 @@ module.exports = {
 
   update_job: function(req, res) {
 
+    var owner = req.session.passport.user,
+        jobName = req.body.jobName,
+        messages = req.body.messages,
+        targetNumber = req.body.targetNumber,
+        frequency = req.body.frequency;
+
+    arylib.createJob(owner, jobName, messages, targetNumber, frequency, function(err, job_id) {
+      db.set('users', owner, {job: job_id}, function(err, user) {
+        res.redirect('/job');
+      });
+    });
   }
 
   
