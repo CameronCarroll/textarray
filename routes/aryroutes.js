@@ -17,6 +17,15 @@ module.exports = {
     res.render('login', { message: req.flash('error') });
   },
 
+  signup_form: function(req, res) {
+    if (req.session.passport.user) {
+      res.redirect('/job');
+    }
+    else {
+      res.render('signup', { message: req.flash('error') });
+    }
+  },
+
   signup: function(req, res) {
     arylib.createUser(req.body.username, req.body.email, req.body.password, function(err, user) {
       console.log(user);
@@ -25,7 +34,7 @@ module.exports = {
   },
 
   getUser: function(req, res) {
-    arylib.getUser(req.params.username, function(err, user) {
+    db.findUserByName(req.params.username, function(err, user) {
       if (user)
         res.send('1');
       else
@@ -62,6 +71,18 @@ module.exports = {
 
   create_job: function(req, res) {
 
+    var owner = req.session.passport.user,
+        jobName = req.body.jobName,
+        messages = req.body.messages,
+        targetNumber = req.body.targetNumber,
+        frequency = req.body.frequency;
+
+    arylib.createJob(owner, jobName, messages, targetNumber, frequency, function(err, job_id) {
+      db.set('users', owner, {job: job_id}, function(err, user) {
+        console.log('pushed to user: ' + user);
+        res.redirect('/job');
+      });
+    });
   },
 
   update_job_form: function(req, res) {
@@ -77,14 +98,7 @@ module.exports = {
 
   update_job: function(req, res) {
 
-  },
-
-  signup_form: function(req, res) {
-    if (req.session.passport.user) {
-      res.redirect('/job');
-    }
-    else {
-      res.render('signup', { message: req.flash('error') });
-    }
   }
+
+  
 }
