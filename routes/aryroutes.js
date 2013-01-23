@@ -40,12 +40,18 @@ module.exports = {
         res.render('job', {job:job});
       }
       else if (user) {
-        res.render('job', {job:null});
+        res.redirect('/create_job');
       }
       else {
         res.redirect('/login');
         //res.render('login');
       }
+    });
+  },
+
+  create_job: function(req, res) {
+    db.findUserById(req.session.passport.user, function(err, user) {
+
     });
   },
 

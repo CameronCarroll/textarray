@@ -67,37 +67,6 @@ describe('TextArray Library:', function() {
         done();
       })
     })
-  }),
-
-  describe('find_job_for_user', function() {
-
-    var user_id;
-
-    before(function(done) {
-      var owner = 'cameron',
-          job_name = 'test',
-          messages_key = 'testkey',
-          target_number = '6191111111',
-          frequency = '6';
-
-      db.findUserByName(owner, function(err, user) {
-        user_id = user._id;
-        arylib.createJob(user_id, job_name, messages_key, target_number, frequency, function(err, job_id) {
-          should.not.exist(err);
-          should.exist(job_id);
-          done();
-        });
-      });
-    })
-
-    // 1:
-    it("should return a job given a user's id", function(done) {
-      arylib.findJob(user_id, function(err, job) {
-        should.not.exist(err);
-        should.exist(job);
-        done();
-      });
-    })
   })
 
 })

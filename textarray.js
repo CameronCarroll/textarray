@@ -14,7 +14,7 @@ var express = require('express'),
     aryroutes = require('./routes/aryroutes'),
     flash = require('connect-flash');
 
-var VERSION = '0.1.0';
+var VERSION = '0.1.1';
 
 
 
