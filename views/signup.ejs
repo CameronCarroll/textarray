@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include head %>
+
+<body>
+  <% if (message) { %>
+  <p><%= message %></p>
+  <% } %>
+  <form id="signup-form" action="/signup" method="post" class="form-horizontal">
+    <h2>Create an Account: </h2>
+    <br />
+    <div class="form-body">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="username">Username:</label>
+          <div class="controls">
+            <input type="text" name="username" id="username" class="input-xlarge uname" />
+            <span id="imagePlaceHolder"></span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="password">Password:</label>
+          <div class="controls">
+            <input type="password" name="password" id="password" class="input-xlarge" />
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label" for="email">Email:</label>
+          <div class="controls">
+            <input type="text" name="email" id="email" class="input-xlarge" />
+          </div>
+        </div>
+      </fieldset>
+    </div>
+    <div class="form-actions">
+      <a href="/" class="btn">Back</a>
+      <button class="btn btn-primary" type="submit">Create User</button>
+    </div>
+  </form>
+
+  <% include jsinclude %>
+</body>
+
+</html>
