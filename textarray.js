@@ -68,8 +68,10 @@ app.get('/', aryroutes.getIndex);
 app.get('/api/user/:username', aryroutes.getUser);
 app.get('/job', aryroutes.job);
 app.get('/login', aryroutes.login);
-app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), aryroutes.logged_in);
+app.get('/create_job', aryroutes.create_job);
+app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), aryroutes.job);
 app.post('/signup', aryroutes.signup);
+app.post('/create_job', aryroutes.job);
 
 var port = process.env.PORT || 3000;
 db.open(function() {
@@ -77,3 +79,4 @@ db.open(function() {
   console.log("Database opened successfully. Listening on port: " + port);
   app.listen(port);
 });
+

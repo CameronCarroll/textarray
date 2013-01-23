@@ -34,28 +34,29 @@ module.exports = {
   },
 
   job: function(req, res) {
-    db.findUserById(req.session.passport.user, function(err, user) {
-      if (user && user.job) {
-        job = user.job;
-        res.render('job', {job:job});
-      }
-      else if (user) {
-        res.redirect('/create_job');
-      }
-      else {
-        res.redirect('/login');
-        //res.render('login');
-      }
-    });
+    if (req.session.passport.user) {
+      db.findUserById(req.session.passport.user, function(err, user) {
+        if (user && user.job) {
+          res.render('job', {job:user.job});
+        }
+        else {
+          res.redirect('/create_job');
+        }
+      });
+    }
+    else {
+      res.redirect('/login');
+    }
   },
 
   create_job: function(req, res) {
-    db.findUserById(req.session.passport.user, function(err, user) {
-
-    });
-  },
-
-  logged_in: function(req, res) {
-    res.redirect('/job');
+    if (req.session.passport.user) {
+      db.findUserById(req.session.passport.user, function(err, user) {
+        res.render('create_job', { message: req.flash('error') });
+      });
+    }
+    else {
+      res.redirect('/login');
+    }
   }
 }
