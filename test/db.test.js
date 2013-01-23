@@ -26,6 +26,7 @@ describe('database', function() {
 
   describe('insertOne', function() {
     it('should insert an object to its collection', function(done) {
+      // note: this is NOT the current job schema
       var job = {username: username,
                 time_started: new Date(),
                 time_modified: new Date(),
