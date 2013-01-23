@@ -67,11 +67,14 @@ app.set('view options', {
 app.get('/', aryroutes.getIndex);
 app.get('/api/user/:username', aryroutes.getUser);
 app.get('/job', aryroutes.job);
-app.get('/login', aryroutes.login);
-app.get('/create_job', aryroutes.create_job);
+app.get('/login', aryroutes.login_form);
+app.get('/signup', aryroutes.signup_form)
+app.get('/create_job', aryroutes.create_job_form);
+app.get('/update_job', aryroutes.update_job_form);
 app.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), aryroutes.job);
 app.post('/signup', aryroutes.signup);
-app.post('/create_job', aryroutes.job);
+app.post('/create_job', aryroutes.create_job);
+app.post('/update_job', aryroutes.update_job);
 
 var port = process.env.PORT || 3000;
 db.open(function() {

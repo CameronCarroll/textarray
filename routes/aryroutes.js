@@ -13,7 +13,7 @@ module.exports = {
     res.render('index');
   },
 
-  login: function(req, res) {
+  login_form: function(req, res) {
     res.render('login', { message: req.flash('error') });
   },
 
@@ -49,7 +49,7 @@ module.exports = {
     }
   },
 
-  create_job: function(req, res) {
+  create_job_form: function(req, res) {
     if (req.session.passport.user) {
       db.findUserById(req.session.passport.user, function(err, user) {
         res.render('create_job', { message: req.flash('error') });
@@ -57,6 +57,34 @@ module.exports = {
     }
     else {
       res.redirect('/login');
+    }
+  },
+
+  create_job: function(req, res) {
+
+  },
+
+  update_job_form: function(req, res) {
+    if (req.session.passport.user) {
+      db.findUserById(req.session.passport.user, function(err, user) {
+        res.render('update_job', { message: req.flash('error') });
+      });
+    }
+    else {
+      res.redirect('/login');
+    }
+  },
+
+  update_job: function(req, res) {
+
+  },
+
+  signup_form: function(req, res) {
+    if (req.session.passport.user) {
+      res.redirect('/job');
+    }
+    else {
+      res.render('signup', { message: req.flash('error') });
     }
   }
 }
