@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <% include head %>
+<% include head %>
 
-  <body>
-    <% if (message) { %>
-      <p><%= message %></p>
-    <% } %>
+<body>
+  <% if (message) { %>
+  <p><%= message %></p>
+  <% } %>
 
-    <% include jsinclude %>
-  </body>
+  Job Name: <%= job.job_name %> <br />
+  Target Number: <%= job.target_number %> <br />
+  Frequency: Every <%= job.frequency %> hours. <br />
+  Messages: <br />
+  <%= job.messages %>
+
+  <% include jsinclude %>
+</body>
 
 </html>

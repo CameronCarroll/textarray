@@ -117,13 +117,13 @@ describe('database', function() {
     before(function(done) {
       var owner = 'cameron',
           job_name = 'test',
-          messages_key = 'testkey',
+          messages = ['test1', 'test2'],
           target_number = '6191111111',
           frequency = '6';
 
       db.findUserByName(owner, function(err, user) {
         user_id = user._id;
-        arylib.createJob(user_id, job_name, messages_key, target_number, frequency, function(err, job_id) {
+        arylib.createJob(user_id, job_name, messages, target_number, frequency, function(err, job_id) {
           should.not.exist(err);
           should.exist(job_id);
           done();
@@ -133,7 +133,7 @@ describe('database', function() {
 
     // 1:
     it("should return a job given a user's id", function(done) {
-      db.findJob(user_id, function(err, job) {
+      db.findJobByUser(user_id, function(err, job) {
         should.not.exist(err);
         should.exist(job);
         done();
