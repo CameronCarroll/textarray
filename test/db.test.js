@@ -168,4 +168,16 @@ describe('database', function() {
     })
   })
 
+  describe('find_ready_jobs', function() {
+
+    // 1:
+    it("should find jobs which haven't been sent yet and which have waited long enough", function(done) {
+      db.findPendingJobs(function(err, pending_jobs) {
+        should.not.exist(err);
+        should.exist(pending_jobs);
+        done();
+      })
+    });
+  })
+
 });

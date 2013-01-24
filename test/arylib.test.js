@@ -69,14 +69,6 @@ describe('TextArray Library:', function() {
     })
   })
 
-  describe('find_ready_jobs', function() {
-    // 1:
-    it("should find jobs whose time since last message exceeds wait time, returns array of jobs", function(done) {
-      var jobs_pending = new Array();
-      db.findAllJobs(function(err, jobs) {
-        
-      })
-    });
-  })
+  
 
 })
