@@ -141,4 +141,33 @@ describe('database', function() {
     })
   })
 
+  describe('find_all_jobs', function() {
+    before(function(done) {
+      var owner = 'cameron',
+          job_name = 'test2',
+          messages = ['test1', 'test2'],
+          target_number = '6191111111',
+          frequency = '6';
+
+      db.findUserByName(owner, function(err, user) {
+        var user_id = user._id;
+        arylib.createJob(user_id, job_name, messages, target_number, frequency, function(err, job_id) {
+          should.not.exist(err);
+          should.exist(job_id);
+          done();
+        });
+      });
+    })
+
+    it("should return all jobs", function(done) {
+      db.findAllJobs(function(err, jobs) {
+        jobs.toArray(function(err, jobs) {
+          should.not.exist(err);
+          should.exist(jobs);
+          done();
+        })     
+      });
+    })
+  })
+
 });

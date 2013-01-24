@@ -81,5 +81,9 @@ db.open(function() {
   console.log("TextArray " + VERSION + " -- Cameron Carroll 2013");
   console.log("Database opened successfully. Listening on port: " + port);
   app.listen(port);
+
+  var minute = 60000;
+
+  setInterval(testfunction, minute)
 });
 

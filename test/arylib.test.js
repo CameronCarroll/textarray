@@ -65,8 +65,16 @@ describe('TextArray Library:', function() {
         should.not.exist(err);
         should.exist(job_id);
         done();
-      })
+      });
     })
+  })
+
+  describe('find_ready_jobs', function() {
+    // 1:
+    it("should find jobs whose time since last message exceeds wait time, returns array of jobs", function(done) {
+      var jobs = new Array();
+
+    });
   })
 
 })
