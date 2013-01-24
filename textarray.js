@@ -84,6 +84,6 @@ db.open(function() {
 
   var minute = 60000;
 
-  setInterval(testfunction, minute)
+  setInterval(arylib.checkAndSendMessages, minute)
 });
 
