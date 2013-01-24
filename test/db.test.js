@@ -161,11 +161,9 @@ describe('database', function() {
 
     it("should return all jobs", function(done) {
       db.findAllJobs(function(err, jobs) {
-        jobs.toArray(function(err, jobs) {
-          should.not.exist(err);
-          should.exist(jobs);
-          done();
-        })     
+        should.not.exist(err);
+        should.exist(jobs);
+        done(); 
       });
     })
   })
