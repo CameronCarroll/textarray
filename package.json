@@ -15,8 +15,7 @@
     "passport-local": "*",
     "connect-flash": "*",
     "kue": "*",
-    "request": "*",
-    "redis": "*"
+    "request": "*"
   },
   "engines": {
     "node": "0.8.x",
