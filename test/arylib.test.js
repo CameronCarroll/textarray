@@ -18,6 +18,11 @@ var username = 'cameron',
 
 describe('TextArray Library:', function() {
 
+  after(function(done) {
+    console.log('cleanup');
+    db.clear(done());
+  })
+
   var instance_user;
 
   before(function(done) {
@@ -55,17 +60,23 @@ describe('TextArray Library:', function() {
     // 1:
     // Job; owner, name, target_number, messages_key, frequency
     it("should save a job and return job id", function(done) {
-      var owner = 'cameron',
-          job_name = 'test',
-          messages_key = 'testkey',
-          target_number = '6191111111',
-          frequency = '6';
+      var owner_name = 'cameron';
 
-      arylib.createJob(owner, job_name, messages_key, target_number, frequency, function(err, job_id) {
-        should.not.exist(err);
-        should.exist(job_id);
-        done();
+      db.findUserByName(owner_name, function(err, user) {
+        var owner = user._id,
+            job_name = 'test_create_job',
+            messages = 'testmessage',
+            target_number = '6193585266',
+            frequency = '1';
+
+        arylib.createJob(owner, job_name, messages, target_number, frequency, function(err, job_id) {
+          should.not.exist(err);
+          should.exist(job_id);
+          done();
+        });
       });
+
+      
     })
   })
 
