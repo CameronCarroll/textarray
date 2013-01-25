@@ -10,7 +10,7 @@
 var assert = require ('assert'),
     db = require('../lib/db'),
     should = require('should'),
-    arylib = require('../lib/arylib')
+    arylib = require('../lib/arylib');
 
 var userData = {};
 

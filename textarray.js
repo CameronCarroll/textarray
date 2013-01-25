@@ -83,10 +83,7 @@ db.open(function() {
   app.listen(port);
 
   var minute = 60000;
-
-  var kue = require('kue');
-  kue.app.listen(3001);
-
+  
   // setInterval(arylib.checkAndQueueMessages, (minute / 10));
   // setInterval(arylib.sendMessages, (minute / 20));
   setInterval(arylib.checkAndQueueMessages, (minute * 1));
