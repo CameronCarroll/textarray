@@ -1,7 +1,7 @@
 {
   "name": "textarray",
   "description": "web app providing regular SMS messages",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "express": "3.x",
@@ -13,7 +13,8 @@
     "bcrypt": "*",
     "passport": "*",
     "passport-local": "*",
-    "connect-flash": "*"
+    "connect-flash": "*",
+    "kue"
   },
   "engines": {
     "node": "0.8.x",

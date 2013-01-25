@@ -14,7 +14,7 @@ var express = require('express'),
     aryroutes = require('./routes/aryroutes'),
     flash = require('connect-flash');
 
-var VERSION = '0.1.1';
+var VERSION = '0.1.2';
 
 
 
@@ -84,6 +84,6 @@ db.open(function() {
 
   var minute = 60000;
 
-  setInterval(arylib.checkAndSendMessages, minute)
+  setInterval(arylib.checkAndQueueMessages, minute);
 });
 
