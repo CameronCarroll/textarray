@@ -55,8 +55,8 @@ app.configure(function() {
   app.use(flash());
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  app.use(express.static(__dirname + '/public'));// simple logger
-  app.use(function(req, res, next){
+  app.use(express.static(__dirname + '/public'));
+  app.use(function(req, res, next){ // simple logger
     console.log('%s %s', req.method, req.url);
     next();
   });
@@ -87,10 +87,8 @@ db.open(function() {
   app.listen(port);
 
   var minute = 60000;
-  
-  // setInterval(arylib.checkAndQueueMessages, (minute / 10));
-  // setInterval(arylib.sendMessages, (minute / 20));
-  setInterval(arylib.checkAndQueueMessages, (minute * 1));
-  setInterval(arylib.sendMessages, (minute * 2));
+
+  setInterval(arylib.checkAndQueueMessages, (minute * 10));
+  setInterval(arylib.sendMessages, (minute * 20));
 });
 
