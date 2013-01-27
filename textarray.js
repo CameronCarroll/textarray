@@ -81,6 +81,7 @@ app.post('/create_job', aryroutes.create_job);
 app.post('/update_job', aryroutes.update_job);
 
 var port = process.env.PORT || 3000;
+
 db.open(function() {
   console.log("TextArray " + VERSION + " -- Cameron Carroll 2013");
   console.log("Database opened successfully. Listening on port: " + port);

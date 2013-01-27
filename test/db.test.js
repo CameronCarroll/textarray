@@ -24,8 +24,12 @@ describe('database', function() {
   var username = 'cameron';
 
   describe('open', function() {
-    it('should open a database connection', function(done) {
-      db.open(done);
+    it('should open db and return our collection', function(done) {
+      db.open(function(err, collection) {
+        should.not.exist(err);
+        should.exist(collection);
+        done();
+      });
     });
   });
 
